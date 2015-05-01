@@ -1,5 +1,18 @@
 Rails.application.routes.draw do
+#  get 'registered_applications/new'
+
+ # get 'registered_applications/create'
+
+  #get 'registered_applications/update'
+
+#  get 'registered_applications/destroy'
+
+ # get 'registered_applications/show'
+
+  #get 'registered_applications/index'
+
   devise_for :users
+  resources :registered_applications
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

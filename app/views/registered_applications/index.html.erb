@@ -1,0 +1,8 @@
+<h1>RegisteredApplications#index</h1>
+<p>Find me in app/views/registered_applications/index.html.erb</p>
+  <% @reg_apps.each do |reg_app| %>
+	<div class="regAppList">
+      <p><%= link_to reg_app.name, reg_app, class: 'appLinks' %></p>
+	  <p><%= reg_app.URL  %></p> 
+	</div>
+  <% end %>
