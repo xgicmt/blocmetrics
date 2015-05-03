@@ -20,7 +20,7 @@ class RegisteredApplicationsController < ApplicationController
   
   def update
     @registered_application = RegisteredApplication.find(params[:id])
-    if @registered_application.update_attributes(params.require(:registered_application).permit(:name, :URL))
+    if @registered_application.update_attributes(reg_app_params)
       redirect_to @registered_application
     else
       flash[:error] = "Error saving App, please try again."
@@ -33,17 +33,18 @@ class RegisteredApplicationsController < ApplicationController
 
   def show
     @registered_application = RegisteredApplication.find(params[:id])
+    @events = @registered_application.events.group_by(&:eventname)
   end
 
   def index
-    #@registered_application = RegisteredApplication.all
-    @reg_apps = current_user.registered_applications.all
+    @reg_apps = RegisteredApplication.all
+    #@reg_apps = current_user.registered_applications.all
   end
 
 private
 
   def reg_app_params
-    params.require(:registered_application).permit(:name, :URL)
+    params.require(:registered_application).permit(:name, :url)
   end
 
 

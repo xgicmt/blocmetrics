@@ -3,6 +3,6 @@
   <% @reg_apps.each do |reg_app| %>
 	<div class="regAppList">
       <p><%= link_to reg_app.name, reg_app, class: 'appLinks' %></p>
-	  <p><%= reg_app.URL  %></p> 
+	  <p><%= reg_app.url %></p> 
 	</div>
   <% end %>
