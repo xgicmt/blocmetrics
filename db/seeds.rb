@@ -32,11 +32,12 @@ registered_applications = RegisteredApplication.all
 
 eventOptions = ['Clicked on Event', 'Scroll Action Happened', 'Video was Watched', 'Shopping Cart was Emptied']
 
-50.times do  
+150.times do  
 	event = Event.create!(
 		registered_application: registered_applications.sample,
 		eventname: eventOptions[rand(0..3)]
 		)
+	event.update_attributes!(created_at: rand(10.minutes .. 7.days).ago)
 end
 
 admin = User.new(

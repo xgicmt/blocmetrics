@@ -1,0 +1,25 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.container{
+    position:relative;
+}
+.signUpLink{
+    padding-left:25px;
+    color:#6f5499;
+    font-size:18px;
+}
+.bs-docs-header{
+	background-color: #6f5499;
+	background-image: linear-gradient(to bottom,#563d7c 0,#6f5499 100%);
+	color:white;
+	padding:25px;
+	min-height:300px;
+}
+.editAppLink{
+	font-size:18px;
+	color:#6f5499;
+}
+.alignRight{
+	margin-left:35%;
+}

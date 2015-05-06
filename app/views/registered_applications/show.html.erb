@@ -1,12 +1,29 @@
 <h1><%= @registered_application.name %></h1> 
-<p> <%= @registered_application.url %></p>
-  <%= link_to 'Edit Current App', edit_registered_application_path %>
-
+  <div class="col-md-8">
+     <p> <%= link_to @registered_application.url, @registered_application.url, target: '_blank' %></p>
+  </div>
+  <div class="col-md-4">
+    <%= link_to 'Edit Current App', edit_registered_application_path, class: 'editAppLink'%>
+   </div>
     <%# @events.each do |event| %>
-	  <div class="eventsList">
+	 <!-- <div class="eventsList"> -->
+	  <div class="stumpy" style="clear:both;">
+	  <ul>
 	   <% @events.each do |key, array| %>
-	   <%= key  %>
-	   <%= array.count() %>
+	     <li>
+	     <%= key  %>
+	     <%= array.count() %>
+         </li>
 	    <%#= event.eventname %> <%#= event.created_at.strftime("%b %d, %Y | %H:%M:%S") %>
+	  	<% end %>
+	  	</ul>
 	  </div>
-	<% end %>
+	  <div class="tabs">
+	    <div class="pieCharts">
+          <%= pie_chart @registered_application.events.group(:eventname).count %>
+	    </div>
+	    <div class="lineChart">
+          <%#= line_chart @registered_application.events.group_by_day(:created_at).count %> 
+	    </div>
+	  </div>
+

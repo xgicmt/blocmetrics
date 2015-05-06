@@ -2,16 +2,43 @@
 <html>
 <head>
   <title>Blocmetrics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "https://www.google.com/jsapi", "chartkick"%>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<header>
-</header>
-<div class="notice"><%= notice %></div>
-<div class="alert"><%= alert %></div> 
-<%= yield %>
 
+<div class="container">
+
+  <div class="col-md-8 navbar-header">
+    <ul class "nav nav-tabs">
+      <% if current_user %>
+      <%= link_to "About", '#', class: 'signUpLink' %>
+        <%= link_to "My Applications", registered_applications_path, class: 'signUpLink'%>
+      <% else %>
+        <%= link_to "About", '#', class: 'signUpLink' %>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col-md-4">
+    <ul class="nav-bar">
+      <% if current_user %>
+        <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'signUpLink' %>
+      <% else %>
+        <%= link_to 'Sign Up', new_user_registration_path, class: 'signUpLink' %>
+        <%= link_to 'Sign In', new_user_session_path, class: 'signUpLink' %>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="alert-success"><%= notice %></div>
+  <div class="alert-danger"><%= alert %></div> 
+
+
+
+<%= yield %>
+</div>
 </body>
 </html>
