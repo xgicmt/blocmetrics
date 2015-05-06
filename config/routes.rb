@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   
 #API routes
   namespace :api, defaults: { format: :json } do
-    resources :events, only: [:create]
+   resources :events, only: [ :create ]
+  #  controller :events, path: '/events' do
+  #    match 'create', via: [:post, :options]
+  #    end
   end
   
 end
